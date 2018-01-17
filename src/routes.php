@@ -1,5 +1,5 @@
 <?php
-require_once("../config.inc.php");
+
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -36,7 +36,8 @@ $app->get("/".VESION."/secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
     echo getenv("JWT_SECRET");
-    return include ("../".VERSION."/secure.php");
+    print_r($data);
+    // return include ("../".VERSION."/secure.php");
 });
  
 $app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
