@@ -32,16 +32,12 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->get("/secure",  function ($request, $response, $args) {
+$app->get("/".VESION."/secure",  function ($request, $response, $args) {
  
-    $data = ["status" => 1, 'msg' => "This route is secure!"];
- 
-    return $response->withStatus(200)
-        ->withHeader("Content-Type", "application/json")
-        ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    return include ('../'.VERSION."/secure.php");
 });
  
-$app->get("/not-secure",  function ($request, $response, $args) {
+$app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "No need of token to access me"];
  
@@ -50,7 +46,7 @@ $app->get("/not-secure",  function ($request, $response, $args) {
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->post("/formData",  function ($request, $response, $args) {
+$app->post("/".VESION."/formData",  function ($request, $response, $args) {
     $data = $request->getParsedBody();
  
     $result = ["status" => 1, 'msg' => $data];
@@ -60,10 +56,10 @@ $app->post("/formData",  function ($request, $response, $args) {
 });
  
  
-$app->get('/home', function ($request, $response, $args) {
+$app->get("/".VESION.'/home', function ($request, $response, $args) {
         // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
  
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', ["name" => "Welcome to Trinity Tuts demo Api"]);
+    return $this->renderer->render($response, 'index.phtml', ["name" => "Welcome to Starter Token Base Auth by Tanutsun"]);
 });
