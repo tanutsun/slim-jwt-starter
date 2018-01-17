@@ -1,6 +1,6 @@
 <?php 
 
-$data = ["status" => 1, 'msg' => "This route is secure!"];
+    $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
 
    return $response->withStatus(200)
        ->withHeader("Content-Type", "application/json")
