@@ -1,26 +1,16 @@
-# Slim Framework 3 Skeleton Application
+# Slim Framework 3 Skeleton Application + JWT Auth
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+Token base authenticator starter by slim
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+# Install the Application
 
-## Install the Application
+clone this repo
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+	composer install
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+# Credit
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
-To run the application in development, you can also run this command. 
-
-	php composer.phar start
-
-Run this command to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+	https://github.com/slimphp/Slim-Skeleton
+	
+	https://trinitytuts.com/secure-your-php-web-services-using-jwt/
