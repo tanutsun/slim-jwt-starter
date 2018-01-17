@@ -1,5 +1,5 @@
 <?php
-require_once("../config.inc.php");
+// require_once("../config.inc.php");
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -23,7 +23,7 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         "exp" => $future->getTimeStamp(),
         "jti" => $jti,
     ];
-    $secret = JWT_SECRET;
+    $secret = getenv("JWT_SECRET");
     $token = JWT::encode($payload, $secret, "HS256");
     $data["token"] = $token;
     $data["expires"] = $future->getTimeStamp();
@@ -32,14 +32,14 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->get("/".VESION."/secure",  function ($request, $response, $args) {
+$app->get("/".getenv("VERSION")."/secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
-    echo VERSION;
+    echo getenv("VERSION");
     // return include ("../".VERSION."/secure.php");
 });
  
-$app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
+$app->get("/".getenv("VERSION")."/not-secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "No need of token to access me"];
  
@@ -48,7 +48,7 @@ $app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->post("/".VESION."/formData",  function ($request, $response, $args) {
+$app->post("/".getenv("VERSION")."/formData",  function ($request, $response, $args) {
     $data = $request->getParsedBody();
  
     $result = ["status" => 1, 'msg' => $data];
@@ -58,7 +58,7 @@ $app->post("/".VESION."/formData",  function ($request, $response, $args) {
 });
  
  
-$app->get("/".VESION.'/home', function ($request, $response, $args) {
+$app->get("/".getenv("VERSION").'/home', function ($request, $response, $args) {
         // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
  

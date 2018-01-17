@@ -1,5 +1,5 @@
 <?php
-require_once("../config.inc.php");
+// require_once("../config.inc.php");
 // Application middleware
  
 // e.g: $app->add(new \Slim\Csrf\Guard);
@@ -24,7 +24,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
     "relaxed" => ['localhost'],
     "secure" => false, // comment this in production call by https
     "logger" => $container['logger'],
-    "secret" => JWT_SECRET,
+    "secret" => getenv("JWT_SECRET"),
     "rules" => [
         new \Slim\Middleware\JwtAuthentication\RequestPathRule([
             "path" => "/",
