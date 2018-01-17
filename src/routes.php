@@ -32,15 +32,7 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->get("/".VERSION."/secure",  function ($request, $response, $args) {
- 
-    $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
-    echo getenv("JWT_SECRET");
-    // print_r($data);
-    // return include ("../".VERSION."/secure.php");
-});
- 
-$app->get("/".VERSION."/not-secure",  function ($request, $response, $args) {
+$app->get("/not-secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "No need of token to access me"];
  
@@ -49,20 +41,30 @@ $app->get("/".VERSION."/not-secure",  function ($request, $response, $args) {
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->post("/".VERSION."/formData",  function ($request, $response, $args) {
-    $data = $request->getParsedBody();
  
-    $result = ["status" => 1, 'msg' => $data];
- 
-    // Request with status response
-    return $this->response->withJson($result, 200);
-});
- 
- 
-$app->get("/".VERSION.'/home', function ($request, $response, $args) {
+$app->get('/home', function ($request, $response, $args) {
         // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
  
     // Render index view
     return $this->renderer->render($response, 'index.phtml', ["name" => "Welcome to Starter Token Base Auth by Tanutsun"]);
+});
+
+
+/*
+*
+* part must use jwt auth
+*
+*/
+
+$app->post("/".VERSION."/formData",  function ($request, $response, $args) {
+    
+    return include ("../".VERSION."/formData.php");
+
+});
+
+$app->get("/".VERSION."/secure",  function ($request, $response, $args) {
+    
+        return include ("../".VERSION."/secure.php");
+    
 });
