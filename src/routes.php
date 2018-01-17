@@ -1,4 +1,5 @@
 <?php
+require_once("../config.inc.php");
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -21,9 +22,8 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         "iat" => $now->getTimeStamp(),
         "exp" => $future->getTimeStamp(),
         "jti" => $jti,
-        "sub" => $_SERVER["PHP_AUTH_USER"]
     ];
-    $secret = "123456789helo_secret";
+    $secret = JWT_SECRET;
     $token = JWT::encode($payload, $secret, "HS256");
     $data["token"] = $token;
     $data["expires"] = $future->getTimeStamp();
