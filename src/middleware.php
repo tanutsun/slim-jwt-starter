@@ -45,15 +45,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
             ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     }
 ]));
- 
-$app->add(new \Slim\Middleware\HttpBasicAuthentication([
-    "path" => "/api/token",
-    "secure" => false,
-    "users" => [
-        "user" => "password"
-    ]
-]));
- 
+
  
 $app->add(new \Tuupola\Middleware\CorsMiddleware([
     "logger" => $container["logger"],
