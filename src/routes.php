@@ -37,7 +37,7 @@ $app->get("/".VERSION."/secure",  function ($request, $response, $args) {
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
     echo getenv("JWT_SECRET");
     // print_r($data);
-    return include ("../".VERSION."/secure.php");
+    // return include ("../".VERSION."/secure.php");
 });
  
 $app->get("/".VERSION."/not-secure",  function ($request, $response, $args) {
