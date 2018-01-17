@@ -21,7 +21,7 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         "iat" => $now->getTimeStamp(),
         "exp" => $future->getTimeStamp(),
         "jti" => $jti,
-        "sub" => $server["PHP_AUTH_USER"]
+        "sub" => $_SERVER["PHP_AUTH_USER"]
     ];
     $secret = "123456789helo_secret";
     $token = JWT::encode($payload, $secret, "HS256");
