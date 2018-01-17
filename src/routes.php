@@ -35,7 +35,7 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
 $app->get("/".VESION."/secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
-    echo getenv("JWT_SECRET");
+    // echo getenv("JWT_SECRET");
     print_r($data);
     // return include ("../".VERSION."/secure.php");
 });
