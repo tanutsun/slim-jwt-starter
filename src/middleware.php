@@ -45,6 +45,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
  
 $app->add(new \Slim\Middleware\HttpBasicAuthentication([
     "path" => "/api/token",
+    "secure" => true,
     "relaxed" => ["localhost"],
     "users" => [
         "user" => "password"
