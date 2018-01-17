@@ -22,7 +22,7 @@ $container["jwt"] = function ($container) {
 $app->add(new \Slim\Middleware\JwtAuthentication([
     "path" => "/",
     "relaxed" => ['localhost'],
-    "secure" => false,
+    "secure" => false, // comment this in production call by https
     "logger" => $container['logger'],
     "secret" => JWT_SECRET,
     "rules" => [
