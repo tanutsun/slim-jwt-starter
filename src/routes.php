@@ -32,7 +32,7 @@ $app->post("/token",  function ($request, $response, $args) use ($container){
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->get("/".VESION."/secure",  function ($request, $response, $args) {
+$app->get("/".VERSION."/secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
     // echo getenv("JWT_SECRET");
@@ -40,7 +40,7 @@ $app->get("/".VESION."/secure",  function ($request, $response, $args) {
     // return include ("../".VERSION."/secure.php");
 });
  
-$app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
+$app->get("/".VERSION."/not-secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "No need of token to access me"];
  
@@ -49,7 +49,7 @@ $app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
         ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 });
  
-$app->post("/".VESION."/formData",  function ($request, $response, $args) {
+$app->post("/".VERSION."/formData",  function ($request, $response, $args) {
     $data = $request->getParsedBody();
  
     $result = ["status" => 1, 'msg' => $data];
@@ -59,7 +59,7 @@ $app->post("/".VESION."/formData",  function ($request, $response, $args) {
 });
  
  
-$app->get("/".VESION.'/home', function ($request, $response, $args) {
+$app->get("/".VERSION.'/home', function ($request, $response, $args) {
         // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
  
