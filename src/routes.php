@@ -36,7 +36,7 @@ $app->get("/".VESION."/secure",  function ($request, $response, $args) {
  
     $data = ["status" => 1, 'msg' => "This route is secure!", 'in '.VERSION];
     
-    return include ("../".VERSION."/v1/secure.php");
+    return include ("../".VERSION."/secure.php");
 });
  
 $app->get("/".VESION."/not-secure",  function ($request, $response, $args) {
